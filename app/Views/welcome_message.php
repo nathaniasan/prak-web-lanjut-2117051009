@@ -264,7 +264,7 @@
 
         <div class="heroe">
 
-            <h1>Selamat Datang di Kampung Durian Runtuh !
+            <h1>Nathania Santa Nigel Simbolon - 2117051009
                 <?= CodeIgniter\CodeIgniter::CI_VERSION ?>
             </h1>
 
