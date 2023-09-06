@@ -3,6 +3,22 @@
     <img src="img/NBC.jpg" alt="" width="200px" class="rounded-circle img-thumbnail shadow-lg" />
     <h1 class="display-4">Nathania Santa Nigel Simbolon</h1>
     <p class="lead">Mahasiswa | Wirausaha</p>
+    <table>
+        <tr>
+            <td>
+                <p class="lead">Nama</p>
+            </td>
+            <td>
+                <p class="lead">:</p>
+            </td>
+            <td>
+                <p class="lead"> 
+                    Nathania Santa Nigel</p>
+            </td>
+        </tr>
+
+    </table>
+
     <hr class="my-4" />
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path fill="#FFFFFF" fill-opacity="1"
