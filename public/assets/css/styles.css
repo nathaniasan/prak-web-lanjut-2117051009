@@ -25,3 +25,19 @@ section {
 .link {
  text-decoration: none;
 }
+
+.table-container {
+ display: flex;
+ justify-content: center; /* Center horizontally */
+
+ height: 100px; /* Optional: Adjust the height as needed */
+}
+/* Atur lebar tabel menjadi 40px */
+table {
+ width: 700px !important;
+}
+
+td {
+    white-space: nowrap!important;
+  }
+/* Atur lebar kolom tabel menjadi 40px (opsional) 
