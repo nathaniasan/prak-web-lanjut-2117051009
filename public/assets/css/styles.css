@@ -1,0 +1,27 @@
+.jumbotron {
+ padding-top: 7rem;
+ background-color: rgb(255, 231, 223);
+}
+
+.body {
+ min-height: 3000px;
+}
+
+#products {
+ background-color: rgb(255, 231, 223);
+}
+
+.button {
+ background-color: #fa8072;
+}
+.footer {
+ background-color: #fa8;
+}
+
+section {
+ padding-top: 7rem;
+}
+
+.link {
+ text-decoration: none;
+}
