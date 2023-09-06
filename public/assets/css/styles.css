@@ -29,7 +29,7 @@ section {
 .table-container {
  display: flex;
  justify-content: center; /* Center horizontally */
-
+align-items: flex-start;
  height: 100px; /* Optional: Adjust the height as needed */
 }
 /* Atur lebar tabel menjadi 40px */
