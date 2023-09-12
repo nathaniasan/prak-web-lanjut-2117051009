@@ -1,0 +1,43 @@
+.jumbotron {
+ padding-top: 7rem;
+ background-color: rgb(255, 231, 223);
+}
+
+.body {
+ min-height: 3000px;
+}
+
+#products {
+ background-color: rgb(255, 231, 223);
+}
+
+.button {
+ background-color: #fa8072;
+}
+.footer {
+ background-color: #fa8;
+}
+
+section {
+ padding-top: 7rem;
+}
+
+.link {
+ text-decoration: none;
+}
+
+.table-container {
+ display: flex;
+ justify-content: center; /* Center horizontally */
+align-items: flex-start;
+ height: 100px; /* Optional: Adjust the height as needed */
+}
+/* Atur lebar tabel menjadi 40px */
+table {
+ width: 700px !important;
+}
+
+td {
+    white-space: nowrap!important;
+  }
+/* Atur lebar kolom tabel menjadi 40px (opsional) 
