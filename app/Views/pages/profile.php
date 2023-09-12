@@ -15,7 +15,8 @@
                 </td>
                 <td>
                     <p class="lead">
-                        Nathania Santa Nigel</p>
+                        <?= $data['nama']; ?>
+                    </p>
                 </td>
             </tr>
 
@@ -27,7 +28,9 @@
                     <p class="lead">:</p>
                 </td>
                 <td>
-                    <p class="lead"> B </p>
+                    <p class="lead">
+                        <?= $data['kelas']; ?>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -39,7 +42,8 @@
                 </td>
                 <td>
                     <p class="lead">
-                        2117051009</p>
+                        <?= $data['npm']; ?>
+                    </p>
                 </td>
             </tr>
         </table>
