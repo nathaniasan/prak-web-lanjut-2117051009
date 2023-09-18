@@ -15,7 +15,7 @@
                 </td>
                 <td>
                     <p class="lead">
-                        <?= $data['nama']; ?>
+                        <?= $nama; ?>
                     </p>
                 </td>
             </tr>
@@ -29,7 +29,7 @@
                 </td>
                 <td>
                     <p class="lead">
-                        <?= $data['kelas']; ?>
+                        <?= $kelas; ?>
                     </p>
                 </td>
             </tr>
@@ -42,7 +42,7 @@
                 </td>
                 <td>
                     <p class="lead">
-                        <?= $data['npm']; ?>
+                        <?= $npm; ?>
                     </p>
                 </td>
             </tr>

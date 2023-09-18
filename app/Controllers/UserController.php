@@ -23,12 +23,16 @@ class UserController extends BaseController
     }
     public function store()
     {
+        $page = 'create_user';
         $data = [
             'nama' => $this->request->getVar('nama'),
             'kelas' => $this->request->getVar('kelas'),
-            'npm' => $this->request->getVar('npm')
+            'npm' => $this->request->getVar('npm'),
+            'title' => ''
         ];
-        return view('pages/profile', $data);
+        return view('templates/header', $data)
+            . view('pages/profile')
+            . view('templates/footer');
     }
 
 }
