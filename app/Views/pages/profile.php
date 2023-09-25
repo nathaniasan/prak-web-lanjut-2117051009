@@ -3,6 +3,7 @@
     <img src="<?= base_url('/assets/images/lopuol.jpg') ?>" alt="" width="200px"
         class="rounded-circle img-thumbnail shadow-lg" />
     <h1 class="display-4">PROFILE</h1>
+
     <hr class="my-4" />
     <div class="table-container pt-5">
         <table class="table table-borderless">
