@@ -2,14 +2,24 @@
 
 namespace App\Controllers;
 
+use App\Models\KelasModel;
 use App\Models\UserModel;
 
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class UserController extends BaseController
 {
+    public $kelasModel;
+    public $userModel;
+    public function __construct()
+    {
 
+        $this->userModel = new UserModel();
+        $this->kelasModel = new KelasModel();
+        $kelas =  $this->kelasModel->getKelas();
 
+        
+    }
     public function profile($page = 'profile')
     {
         if (!is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
@@ -24,17 +34,27 @@ class UserController extends BaseController
     {
         $userModel = new UserModel();
 
+        //validasi input
         if (
             !$this->validate([
-                'nama' => 'required|is_unique[user.nama]'
+                'nama' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Tidak Boleh Kosong'
+                    ]
+                ],
+                'npm' => [
+                    'rules' => 'required|is_unique[user.npm]',
+                    'errors' => [
+                        'required' => 'Tidak Boleh Kosong',
+                        'is_unique' => 'NPM Sudah Terpakai'
+                    ]
+                ]
             ])
         ) {
-            // mengirim notifikasi pesan kesalahan
-            $validation = \Config\Services::validation();
-
-            return redirect()->to('/user/create')->withInput()->with('validation', $validation);
+            session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back()->withInput();
         }
-
         $userModel->saveUser($datas =
             [
                 'nama' => $this->request->getVar('nama'),
@@ -48,7 +68,7 @@ class UserController extends BaseController
             'nama' => $this->request->getVar('nama'),
             'kelas' => $this->request->getVar('kelas'),
             'npm' => $this->request->getVar('npm'),
-            'title' => ''
+            'title' => 'Profile'
         ];
         return view('templates/header', $data)
             . view('pages/profile')
@@ -58,34 +78,16 @@ class UserController extends BaseController
     public function create()
     {
         session();
-        $data = [
-            'title' => 'Home Profile',
 
-        ];
+        $kelasModel = new KelasModel();
+        $kelas = $kelasModel->getKelas();
 
         // metthod ini digunakan untuk menampilkan dropdown kelas
-        $kelas = [
-            [
-                'id' => 1,
-                'nama_kelas' => 'A'
-            ],
-            [
-                'id' => 2,
-                'nama_kelas' => 'B'
-            ],
-            [
-                'id' => 3,
-                'nama_kelas' => 'C'
-            ],
-            [
-                'id' => 4,
-                'nama_kelas' => 'D'
-            ],
-        ];
+
         $data = [
             'kelas' => $kelas,
-            'validation' => \Config\Services::validation()
-
+            'validation' => \Config\Services::validation(),
+            'title' => 'Create User'
         ];
 
         return view('pages/create_user', $data);
