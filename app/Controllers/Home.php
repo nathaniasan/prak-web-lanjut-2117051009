@@ -14,11 +14,14 @@ class Home extends BaseController
     public function nama($nama = "", $kelas = "", $npm = ""): string
     {
         $data = [
+            'title' => 'profilku',
             'nama' => $nama,
             'kelas' => $kelas,
             'npm' => $npm
         ];
-        return view('pages/profile', $data);
+        return view('templates/header', $data)
+            . view('pages/profile')
+            . view('templates/footer');
     }
     public function profile($page = 'profile')
     {

@@ -3,6 +3,7 @@
     <img src="<?= base_url('/assets/images/lopuol.jpg') ?>" alt="" width="200px"
         class="rounded-circle img-thumbnail shadow-lg" />
     <h1 class="display-4">PROFILE</h1>
+
     <hr class="my-4" />
     <div class="table-container pt-5">
         <table class="table table-borderless">
@@ -15,7 +16,8 @@
                 </td>
                 <td>
                     <p class="lead">
-                        Nathania Santa Nigel</p>
+                        <?= $nama; ?>
+                    </p>
                 </td>
             </tr>
 
@@ -27,7 +29,9 @@
                     <p class="lead">:</p>
                 </td>
                 <td>
-                    <p class="lead"> B </p>
+                    <p class="lead">
+                        <?= $kelas; ?>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -39,7 +43,8 @@
                 </td>
                 <td>
                     <p class="lead">
-                        2117051009</p>
+                        <?= $npm; ?>
+                    </p>
                 </td>
             </tr>
         </table>
