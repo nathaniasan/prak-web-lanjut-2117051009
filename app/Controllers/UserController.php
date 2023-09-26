@@ -13,13 +13,19 @@ class UserController extends BaseController
     public $userModel;
     public function __construct()
     {
-
         $this->userModel = new UserModel();
         $this->kelasModel = new KelasModel();
-        $kelas =  $this->kelasModel->getKelas();
 
-        
     }
+
+    public function index()
+    {
+        $data = [
+            'title' => 'Profile'
+        ];
+        return view('list_user', $data);
+    }
+
     public function profile($page = 'profile')
     {
         if (!is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
@@ -55,7 +61,7 @@ class UserController extends BaseController
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
-        $userModel->saveUser($datas =
+        $this->userModel->saveUser($datas =
             [
                 'nama' => $this->request->getVar('nama'),
                 'id_kelas' => $this->request->getVar('kelas'),
@@ -79,8 +85,7 @@ class UserController extends BaseController
     {
         session();
 
-        $kelasModel = new KelasModel();
-        $kelas = $kelasModel->getKelas();
+        $kelas = $this->kelasModel->getKelas();
 
         // metthod ini digunakan untuk menampilkan dropdown kelas
 

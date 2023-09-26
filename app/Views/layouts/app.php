@@ -20,7 +20,6 @@
 <body>
     <!-- NAVBAR -->
 
-
     <h1>
         <?= esc($title) ?>
     </h1>
