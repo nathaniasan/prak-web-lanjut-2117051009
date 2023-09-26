@@ -19,16 +19,14 @@
 
 <body>
     <!-- NAVBAR -->
-
     <h1>
         <?= esc($title) ?>
     </h1>
     <?= $this->renderSection('content') ?>
-    <?= $this->extend('layouts/app') ?>
-    <?= $this->section('content') ?>
-
+    <?= $this->extend('/templates/navbar_user') ?>
     <div>
         <!-- knten -->
+        <?= $this->section('content') ?>
     </div>
     <?= $this->endSection() ?>
     <!-- Option 1: Bootstrap Bundle with Popper -->

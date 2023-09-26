@@ -21,7 +21,7 @@ class UserController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Profile'
+            'title' => 'Halaman List User'
         ];
         return view('list_user', $data);
     }

@@ -1,5 +1,4 @@
-
-    <?= $this->extend('layouts/app') ?>
-    <?= $this->section('content') ?>
-    inni Halaman List User
-    <?= $this->endSection() ?>
+<?= $this->extend('layouts/app') ?>
+<?= $this->section('content') ?>
+<h4>Ini Halaman List User</h4>
+<?= $this->endSection() ?>
