@@ -54,9 +54,11 @@ class UserController extends BaseController
         if (
             !$this->validate([
                 'nama' => [
-                    'rules' => 'required',
+                    'rules' => 'required|is_unique[user.nama]',
                     'errors' => [
-                        'required' => 'Tidak Boleh Kosong'
+                        'required' => 'Tidak Boleh Kosong',
+                        'is_unique' => 'Nama Sudah Terpakai'
+
                     ]
                 ],
                 'npm' => [
@@ -96,7 +98,7 @@ class UserController extends BaseController
             'validation' => \Config\Services::validation(),
             'title' => 'Create User'
         ];
-        dd($data['validation']);
+        // dd($data['validation']);
         return view('pages/create_user', $data);
     }
 

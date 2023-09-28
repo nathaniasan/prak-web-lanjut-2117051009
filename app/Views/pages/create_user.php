@@ -18,7 +18,11 @@
 <body>
     <h2>INI HALAMAN CREATE USER</h2>
     <h2>
-        <?= 'k' . $validation->listErrors(); ?>
+        <!-- Di dalam file halaman HTML (contoh: views/pages/create_user.php) -->
+        <?php if (session()->has('error')):
+            echo session('error');
+        endif; ?>
+
     </h2>
     <form action="<?= base_url('/user/store') ?>" method="post">
         <label for="nama">Nama:</label>
