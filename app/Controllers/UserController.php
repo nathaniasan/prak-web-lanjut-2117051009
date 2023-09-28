@@ -15,13 +15,14 @@ class UserController extends BaseController
     {
         $this->userModel = new UserModel();
         $this->kelasModel = new KelasModel();
-
     }
 
     public function index()
     {
         $data = [
-            'title' => 'Halaman List User'
+            'title' => 'Halaman List User',
+            'users' => $this->userModel->getUser(),
+
         ];
         return view('list_user', $data);
     }
@@ -39,6 +40,15 @@ class UserController extends BaseController
     public function store()
     {
         $userModel = new UserModel();
+
+
+        $this->userModel->saveUser($datas =
+            [
+                'nama' => $this->request->getVar('nama'),
+                'id_kelas' => $this->request->getVar('kelas'),
+                'npm' => $this->request->getVar('npm'),
+            ]); {
+        }
 
         //validasi input
         if (
@@ -61,13 +71,6 @@ class UserController extends BaseController
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
-        $this->userModel->saveUser($datas =
-            [
-                'nama' => $this->request->getVar('nama'),
-                'id_kelas' => $this->request->getVar('kelas'),
-                'npm' => $this->request->getVar('npm'),
-            ]); {
-        }
         $page = 'create_user';
         // $data yang mau dikirimkan dan ditampilkan ke page profil setelah create
         $data = [
@@ -76,9 +79,8 @@ class UserController extends BaseController
             'npm' => $this->request->getVar('npm'),
             'title' => 'Profile'
         ];
-        return view('templates/header', $data)
-            . view('pages/profile')
-            . view('templates/footer');
+
+        return redirect()->to('/user');
     }
 
     public function create()
@@ -94,7 +96,7 @@ class UserController extends BaseController
             'validation' => \Config\Services::validation(),
             'title' => 'Create User'
         ];
-
+        dd($data['validation']);
         return view('pages/create_user', $data);
     }
 
