@@ -41,15 +41,6 @@ class UserController extends BaseController
     {
         $userModel = new UserModel();
 
-
-        $this->userModel->saveUser($datas =
-            [
-                'nama' => $this->request->getVar('nama'),
-                'id_kelas' => $this->request->getVar('kelas'),
-                'npm' => $this->request->getVar('npm'),
-            ]); {
-        }
-
         //validasi input
         if (
             !$this->validate([
@@ -70,9 +61,19 @@ class UserController extends BaseController
                 ]
             ])
         ) {
-            session()->setFlashdata('error', $this->validator->listErrors());
+            $errors = [
+                'nama' => $this->validator->getError('nama'),
+                'npm' => $this->validator->getError('npm')
+            ];
+            session()->setFlashdata('error', $errors);
             return redirect()->back()->withInput();
         }
+        $this->userModel->saveUser($datas =
+            [
+                'nama' => $this->request->getVar('nama'),
+                'id_kelas' => $this->request->getVar('kelas'),
+                'npm' => $this->request->getVar('npm'),
+            ]);
         $page = 'create_user';
         // $data yang mau dikirimkan dan ditampilkan ke page profil setelah create
         $data = [
@@ -87,7 +88,6 @@ class UserController extends BaseController
 
     public function create()
     {
-        session();
 
         $kelas = $this->kelasModel->getKelas();
 
@@ -95,7 +95,6 @@ class UserController extends BaseController
 
         $data = [
             'kelas' => $kelas,
-            'validation' => \Config\Services::validation(),
             'title' => 'Create User'
         ];
         // dd($data['validation']);
