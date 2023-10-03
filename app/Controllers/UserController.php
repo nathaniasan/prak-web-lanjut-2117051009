@@ -15,13 +15,14 @@ class UserController extends BaseController
     {
         $this->userModel = new UserModel();
         $this->kelasModel = new KelasModel();
-
     }
 
     public function index()
     {
         $data = [
-            'title' => 'Profile'
+            'title' => 'Halaman List User',
+            'users' => $this->userModel->getUser(),
+
         ];
         return view('list_user', $data);
     }
@@ -44,9 +45,11 @@ class UserController extends BaseController
         if (
             !$this->validate([
                 'nama' => [
-                    'rules' => 'required',
+                    'rules' => 'required|is_unique[user.nama]',
                     'errors' => [
-                        'required' => 'Tidak Boleh Kosong'
+                        'required' => 'Tidak Boleh Kosong',
+                        'is_unique' => 'Nama Sudah Terpakai'
+
                     ]
                 ],
                 'npm' => [
@@ -58,7 +61,11 @@ class UserController extends BaseController
                 ]
             ])
         ) {
-            session()->setFlashdata('error', $this->validator->listErrors());
+            $errors = [
+                'nama' => $this->validator->getError('nama'),
+                'npm' => $this->validator->getError('npm')
+            ];
+            session()->setFlashdata('error', $errors);
             return redirect()->back()->withInput();
         }
         $this->userModel->saveUser($datas =
@@ -66,8 +73,7 @@ class UserController extends BaseController
                 'nama' => $this->request->getVar('nama'),
                 'id_kelas' => $this->request->getVar('kelas'),
                 'npm' => $this->request->getVar('npm'),
-            ]); {
-        }
+            ]);
         $page = 'create_user';
         // $data yang mau dikirimkan dan ditampilkan ke page profil setelah create
         $data = [
@@ -76,14 +82,12 @@ class UserController extends BaseController
             'npm' => $this->request->getVar('npm'),
             'title' => 'Profile'
         ];
-        return view('templates/header', $data)
-            . view('pages/profile')
-            . view('templates/footer');
+
+        return redirect()->to('/user');
     }
 
     public function create()
     {
-        session();
 
         $kelas = $this->kelasModel->getKelas();
 
@@ -91,10 +95,9 @@ class UserController extends BaseController
 
         $data = [
             'kelas' => $kelas,
-            'validation' => \Config\Services::validation(),
             'title' => 'Create User'
         ];
-
+        // dd($data['validation']);
         return view('pages/create_user', $data);
     }
 

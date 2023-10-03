@@ -17,15 +17,25 @@
 
 <body>
     <h2>INI HALAMAN CREATE USER</h2>
-    <h2>
-        <?= 'k' . $validation->listErrors(); ?>
-    </h2>
     <form action="<?= base_url('/user/store') ?>" method="post">
         <label for="nama">Nama:</label>
-        <input type="text" id="nama" name="nama" required><br><br>
+        <input type="text" class="form-control  <?= session()->has('error') ? 'is-invalid' : ''; ?>" id="nama"
+            name="nama">
+        <div class="invalid-feedback">
+            <?php if (session()->has('error')):
+                echo session('error')['nama'];
+            endif; ?>
+        </div>
+        <br><br>
 
         <label for="npm">NPM:</label>
-        <input type="text" id="npm" name="npm" required><br><br>
+        <input type="text" class="form-control  <?= (session()->has('error')) ? 'is-invalid' : ''; ?>" id="npm"
+            name="npm">
+        <div class="invalid-feedback">
+            <?php if (session()->has('error')):
+                echo session('error')['npm'];
+            endif; ?>
+        </div><br>
 
         <label for="kelas">Kelas:</label>
         <select id="kelas" name="kelas">
