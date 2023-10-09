@@ -4,15 +4,7 @@
 <div class="container">
     <br>
     <h4>Ini Halaman List User</h4>
-    <br>
-    <h4>Ini Halaman List User</h4>
-    <br>
-    <h4>Ini Halaman List User</h4>
-    <br>
-    <h4>Ini Halaman List User</h4>
-    <br>
-    <h4>Ini Halaman List User</h4>
-
+    <button><a href="">Tambah</a></button>
 
     <table>
         <thead>
@@ -40,6 +32,10 @@
                     </td>
                     <td>
                         <?= $user['nama_kelas'] ?>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary">EDIT</button>
+                        <button type="button" class="btn btn-secondary">HAPUS</button>
                     </td>
                 </tr>
             <?php } ?>

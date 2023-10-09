@@ -24,6 +24,7 @@ class UserController extends BaseController
             'users' => $this->userModel->getUser(),
 
         ];
+
         return view('list_user', $data);
     }
 
@@ -40,7 +41,6 @@ class UserController extends BaseController
     public function store()
     {
         $userModel = new UserModel();
-
         //validasi input
         if (
             !$this->validate([
@@ -68,11 +68,21 @@ class UserController extends BaseController
             session()->setFlashdata('error', $errors);
             return redirect()->back()->withInput();
         }
+
+        $path = 'assets/uploads/img/';
+        $foto = $this->request->getFile('foto');
+        $name_foto = $foto->getRandomName();
+        //digunakan untuk penamaan buat di database
+        if ($foto->move($path, $name_foto)) {
+            $foto = base_url($path . $name_foto);
+        }
+
         $this->userModel->saveUser($datas =
             [
                 'nama' => $this->request->getVar('nama'),
                 'id_kelas' => $this->request->getVar('kelas'),
                 'npm' => $this->request->getVar('npm'),
+                'foto' => $foto
             ]);
         $page = 'create_user';
         // $data yang mau dikirimkan dan ditampilkan ke page profil setelah create
@@ -99,6 +109,17 @@ class UserController extends BaseController
         ];
         // dd($data['validation']);
         return view('pages/create_user', $data);
+    }
+    public function show($id)
+    {
+        $user = $this->userModel->getUser($id);
+
+        $data = [
+            'title' => 'Profile',
+            'user' => $user
+        ];
+
+        return view('templates/header', $data) . view('pages/profile', $data);
     }
 
 }

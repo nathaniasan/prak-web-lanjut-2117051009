@@ -3,6 +3,10 @@
  background-color: rgb(255, 231, 223);
 }
 
+table, th, td {
+  border: 1px solid;
+  }
+  
 .body {
  min-height: 3000px;
 }

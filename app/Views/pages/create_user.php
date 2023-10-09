@@ -17,7 +17,7 @@
 
 <body>
     <h2>INI HALAMAN CREATE USER</h2>
-    <form action="<?= base_url('/user/store') ?>" method="post">
+    <form action="<?= base_url('/user/store') ?>" enctype="multipart/form-data" method="post">
         <label for="nama">Nama:</label>
         <input type="text" class="form-control  <?= session()->has('error') ? 'is-invalid' : ''; ?>" id="nama"
             name="nama">
@@ -52,6 +52,10 @@
             } ?>
             <br><br>
         </select>
+        <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+            <input class="form-control" type="file" name="foto" multiple>
+        </div>
 
         <input type="submit" value="Kirim">
     </form>
