@@ -1,6 +1,6 @@
 <!-- JUMBOTRON -->
 <section class="jumbotron text-center">
-    <img src="<?= base_url('/assets/images/lopuol.jpg') ?>" alt="" width="200px"
+    <img src="<?= $user['foto'] ?? '<default-foto>'; ?>" alt="" width="200px"
         class="rounded-circle img-thumbnail shadow-lg" />
     <h1 class="display-4">PROFILE</h1>
 
@@ -16,7 +16,7 @@
                 </td>
                 <td>
                     <p class="lead">
-                        <?= $nama; ?>
+                        <?= $user['nama']; ?>
                     </p>
                 </td>
             </tr>
@@ -30,7 +30,7 @@
                 </td>
                 <td>
                     <p class="lead">
-                        <?= $kelas; ?>
+                        <?= $user['nama_kelas']; ?>
                     </p>
                 </td>
             </tr>
@@ -43,7 +43,7 @@
                 </td>
                 <td>
                     <p class="lead">
-                        <?= $npm; ?>
+                        <?= $user['npm']; ?>
                     </p>
                 </td>
             </tr>
