@@ -4,26 +4,13 @@ namespace App\Controllers;
 
 use CodeIgniter\Exceptions\PageNotFoundException;
 
-class Home extends BaseController
+class Pages extends BaseController
 {
     public function index(): string
     {
         return view('welcome_message');
     }
-
-    public function nama($nama = "", $kelas = "", $npm = ""): string
-    {
-        $data = [
-            'title' => 'profilku',
-            'nama' => $nama,
-            'kelas' => $kelas,
-            'npm' => $npm
-        ];
-        return view('templates/header', $data)
-            . view('pages/profile')
-            . view('templates/footer');
-    }
-    public function profile($page = 'profile')
+    public function view($page = 'home')
     {
         if (!is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
             throw new PageNotFoundException("not found file " . $page);
@@ -33,4 +20,6 @@ class Home extends BaseController
             . view('pages/' . $page)
             . view('templates/footer');
     }
+
+
 }
