@@ -4,7 +4,7 @@
 <div class="container">
     <br>
     <h4>Ini Halaman List User</h4>
-    <button><a href="">Tambah</a></button>
+    <button><a href="<?= base_url('/user' . '/create') ?>">Tambah</a></button>
 
     <table>
         <thead>
@@ -34,8 +34,15 @@
                         <?= $user['nama_kelas'] ?>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-primary">EDIT</button>
-                        <button type="button" class="btn btn-secondary">HAPUS</button>
+                        <a href="<?= base_url('/user' . '/' . $user['id'] . '/edit') ?>" type="submit"
+                            class="btn btn-primary">EDIT
+                        </a>
+                        <form action="<?= base_url('user/' . $user['id']) ?> " method="post">
+                            <input type="hidden" name="_method" value="delete" class="btn btn-danger">
+
+                            <?= csrf_field() ?>
+                            <button type="submit">DELETE</button></button>
+                        </form>
                     </td>
                 </tr>
             <?php } ?>
