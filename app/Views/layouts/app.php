@@ -1,9 +1,6 @@
-<h1>
-    <?= esc($title) ?>
-</h1>
 <?= $this->renderSection('content') ?>
 <?= $this->include('/templates/navbar_user') ?>
-<div>
+<div class="wrapper">
     <!-- knten -->
     <?= $this->section('content') ?>
 
